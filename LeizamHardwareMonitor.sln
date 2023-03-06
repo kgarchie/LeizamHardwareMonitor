@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeizamHardwareMonitor", "LeizamHardwareMonitor\LeizamHardwareMonitor.csproj", "{EDD7ABB8-EDDF-4037-A3AD-669B99CFBB65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDD7ABB8-EDDF-4037-A3AD-669B99CFBB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD7ABB8-EDDF-4037-A3AD-669B99CFBB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD7ABB8-EDDF-4037-A3AD-669B99CFBB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD7ABB8-EDDF-4037-A3AD-669B99CFBB65}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

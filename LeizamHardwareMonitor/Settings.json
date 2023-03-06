@@ -1,0 +1,12 @@
+﻿{
+  "CPU_Threshold_Usage": 80,
+  "Memory_Threshold_Usage": 80,
+  "Disk_Threshold_Usage": 80,
+  "Virtual_Memory_Threshold_Usage": 80,
+  "SmtpUser": "trollyusertroller@gmail.com",
+  "SmtpPassword": "dvfziymmifscotve",
+  "SmtpServer": "smtp.gmail.com",
+  "SmtpPort": 587,
+  "SmtpTo": "bosireallan@outlook.com",
+  "SmtpFrom": "archiethebig@gmail.com"
+}

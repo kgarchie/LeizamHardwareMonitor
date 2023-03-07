@@ -14,7 +14,7 @@ public class SendMail : ISendMail
     public void SendWarningMail(string subject, string body)
     {
         
-        body = $"<html><body>{body}</body></html>";
+        body = $"{body}";
         
         var smtpServer = _configuration["SmtpServer"];
         var smtpPort = _configuration["SmtpPort"];

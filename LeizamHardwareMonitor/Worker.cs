@@ -15,25 +15,23 @@ public class Worker : BackgroundService
             .AddJsonFile("./Settings.json", true, true)
             .Build();
         
-        // Check if all required settings are set
+        // Check if all required settings are set and not string.Empty
         if (_configuration["SmtpServer"] != null && _configuration["SmtpPort"] != null &&
             _configuration["SmtpUser"] != null && _configuration["SmtpPassword"] != null &&
             _configuration["SmtpFrom"] != null && _configuration["SmtpTo"] != null &&
-            _configuration["CPU_Threshold_Usage"] != null) return;
-        
-        // Check if all required settings are set - Not empty strings
-        if (_configuration["SmtpServer"] == string.Empty || _configuration["SmtpPort"] == string.Empty ||
-            _configuration["SmtpUser"] == string.Empty || _configuration["SmtpPassword"] == string.Empty ||
-            _configuration["SmtpFrom"] == string.Empty || _configuration["SmtpTo"] == string.Empty ||
-            _configuration["CPU_Threshold_Usage"] == string.Empty)
+            _configuration["CPU_Threshold_Usage"] != null &&
+            _configuration["SmtpServer"] != string.Empty && _configuration["SmtpPort"] != string.Empty &&
+            _configuration["SmtpUser"] != string.Empty && _configuration["SmtpPassword"] != string.Empty &&
+            _configuration["SmtpFrom"] != string.Empty && _configuration["SmtpTo"] != string.Empty &&
+            _configuration["CPU_Threshold_Usage"] != string.Empty)
+        {
+            Console.WriteLine("All required settings are set");
+        }
+        else
         {
             Console.WriteLine("Missing configuration for sending mail: Please check Settings.json, Exiting...");
             Environment.Exit(1);
         }
-        
-        
-        Console.WriteLine("Missing configuration for sending mail: Please check Settings.json, Exiting...");
-        Environment.Exit(1);
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

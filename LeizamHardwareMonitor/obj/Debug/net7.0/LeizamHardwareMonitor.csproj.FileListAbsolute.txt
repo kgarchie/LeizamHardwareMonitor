@@ -76,3 +76,4 @@ C:\Users\Bosir\OneDrive\Desktop\Extras\dotNET\LeizamHardwareMonitor\LeizamHardwa
 C:\Users\Bosir\OneDrive\Desktop\Extras\dotNET\LeizamHardwareMonitor\LeizamHardwareMonitor\obj\Debug\net7.0\LeizamHardwareMonitor.pdb
 C:\Users\Bosir\OneDrive\Desktop\Extras\dotNET\LeizamHardwareMonitor\LeizamHardwareMonitor\obj\Debug\net7.0\LeizamHardwareMonitor.genruntimeconfig.cache
 C:\Users\Bosir\OneDrive\Desktop\Extras\dotNET\LeizamHardwareMonitor\LeizamHardwareMonitor\obj\Debug\net7.0\ref\LeizamHardwareMonitor.dll
+C:\Users\Bosir\OneDrive\Desktop\Extras\dotNET\LeizamHardwareMonitor\LeizamHardwareMonitor\bin\Debug\net7.0\RestSharp.dll

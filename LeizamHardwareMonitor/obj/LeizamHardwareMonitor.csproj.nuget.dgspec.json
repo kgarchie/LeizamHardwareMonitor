@@ -47,6 +47,10 @@
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[7.0.1, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[109.0.0-preview.2, )"
             }
           },
           "imports": [

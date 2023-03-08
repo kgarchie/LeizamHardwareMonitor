@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4XMka9NaswK4Ys+7iGLlkYB4mDFfP2WwZzRYq1w0ZRd3WfhNgSDeCGNNZ7sCA3GN8uIIdMVgVjA34b2flDniTw==",
+  "dgSpecHash": "g9npCVtMSi+cYLA8o7Pwu9vOuBJe/dCTCieQAulmTXh4amzSSh4htMpPS2kR/egO9u7AmWkQfHy480Z6ymVAuQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\Bosir\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\Bosir\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Bosir\\.nuget\\packages\\mono.posix.netstandard\\1.0.0\\mono.posix.netstandard.1.0.0.nupkg.sha512",
+    "C:\\Users\\Bosir\\.nuget\\packages\\restsharp\\109.0.0-preview.2\\restsharp.109.0.0-preview.2.nupkg.sha512",
     "C:\\Users\\Bosir\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
     "C:\\Users\\Bosir\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",
     "C:\\Users\\Bosir\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\7.0.0\\runtime.linux-x64.runtime.native.system.io.ports.7.0.0.nupkg.sha512",

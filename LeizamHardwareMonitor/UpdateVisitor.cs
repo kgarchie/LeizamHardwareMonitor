@@ -8,130 +8,142 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
     private readonly IConfiguration _configuration;
     private readonly ISendMail _sendMail;
     private readonly ILogger _logger;
+
     public UpdateVisitor(IConfiguration configuration, ILogger logger)
     {
-        
         _configuration = configuration;
-        _sendMail = new SendMail(_configuration);
         _logger = logger;
+        _sendMail = new SendMail(_configuration, _logger);
     }
-    
-    public void Monitor()
+
+    public Task Monitor()
     {
-        Computer computer = new Computer
+        try
         {
-            IsCpuEnabled = true,
-            // IsGpuEnabled = true,
-            IsMemoryEnabled = true,
-            // IsMotherboardEnabled = true,
-            // IsControllerEnabled = true,
-            // IsNetworkEnabled = true,
-            // IsStorageEnabled = true
-        };
-
-        computer.Open();
-        computer.Accept(new UpdateVisitor(_configuration, _logger));
-
-        foreach (IHardware hardware in computer.Hardware)
-        {
-            switch (hardware.HardwareType)
+            Computer computer = new Computer
             {
-                // hardware.Update();
-                case HardwareType.Memory:
+                IsCpuEnabled = true,
+                // IsGpuEnabled = true,
+                IsMemoryEnabled = true,
+                // IsMotherboardEnabled = true,
+                // IsControllerEnabled = true,
+                // IsNetworkEnabled = true,
+                // IsStorageEnabled = true
+            };
+
+            computer.Open();
+            computer.Accept(new UpdateVisitor(_configuration, _logger));
+
+            foreach (IHardware hardware in computer.Hardware)
+            {
+                switch (hardware.HardwareType)
                 {
-                    // if memory
-                    foreach (var sensor in hardware.Sensors)
+                    // hardware.Update();
+                    case HardwareType.Memory:
                     {
-                        if (sensor.SensorType != SensorType.Load) continue;
-                        switch (sensor.Name)
+                        // if memory
+                        foreach (var sensor in hardware.Sensors)
                         {
-                            // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
-                            // Please note: There is both physical memory and virtual memory. The physical memory is the RAM, the virtual memory is the swap file.
-                            case "Memory":
+                            if (sensor.SensorType != SensorType.Load) continue;
+                            switch (sensor.Name)
                             {
-                                if (sensor.Value > int.Parse(_configuration["CPU_Threshold_Usage"]!))
+                                // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
+                                // Please note: There is both physical memory and virtual memory. The physical memory is the RAM, the virtual memory is the swap file.
+                                case "Memory":
                                 {
-                                    _logger.LogWarning("Physical memory critical: {0} %", sensor.Value);
-                                    _sendMail.SendWarningMail("Physical memory critical", $"Physical memory critical: {sensor.Value} %");
+                                    if (sensor.Value > int.Parse(_configuration["CPU_Threshold_Usage"]!))
+                                    {
+                                        _logger.LogWarning("Physical memory critical: {0} %", sensor.Value);
+                                        _sendMail.SendWarningMail("Physical memory critical",
+                                            $"Physical memory critical: {sensor.Value} %");
+                                    }
+
+                                    break;
                                 }
-
-                                break;
-                            }
-                            case "Virtual Memory":
-                            {
-                                if (sensor.Value > int.Parse(_configuration["Virtual_Memory_Threshold_Usage"]!))
+                                case "Virtual Memory":
                                 {
-                                    _logger.LogWarning("Virtual memory critical: {0} %", sensor.Value);
-                                    _sendMail.SendWarningMail("Virtual memory critical", $"Virtual memory critical: {sensor.Value} %");
-                                }
+                                    if (sensor.Value > int.Parse(_configuration["Virtual_Memory_Threshold_Usage"]!))
+                                    {
+                                        _logger.LogWarning("Virtual memory critical: {0} %", sensor.Value);
+                                        _sendMail.SendWarningMail("Virtual memory critical",
+                                            $"Virtual memory critical: {sensor.Value} %");
+                                    }
 
-                                break;
-                            }
-                        }
-                    }
-
-                    break;
-                }
-                // if cpu
-                case HardwareType.Cpu:
-                {
-                    foreach (var sensor in hardware.Sensors)
-                    {
-                        if (sensor.SensorType == SensorType.Load)
-                        {
-                            // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
-                            if (sensor.Name == "CPU Total")
-                            {
-                                if (sensor.Value > int.Parse(_configuration["CPU_Threshold_Usage"]!))
-                                {
-                                    _logger.LogWarning("CPU critical: {0} %", sensor.Value);
-                                    _sendMail.SendWarningMail("CPU critical", $"CPU critical: {sensor.Value} %");
+                                    break;
                                 }
                             }
                         }
-                    }
 
-                    break;
-                }
-                // if HDD
-                case HardwareType.Storage:
-                {
-                    foreach (var sensor in hardware.Sensors)
+                        break;
+                    }
+                    // if cpu
+                    case HardwareType.Cpu:
                     {
-                        if (sensor.SensorType == SensorType.Load)
+                        foreach (var sensor in hardware.Sensors)
                         {
-                            // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
-                            if (sensor.Name == "HDD Total")
+                            if (sensor.SensorType == SensorType.Load)
                             {
-                                if (sensor.Value > int.Parse(_configuration["HDD_Threshold_Usage"]!))
+                                // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
+                                if (sensor.Name == "CPU Total")
                                 {
-                                    _logger.LogWarning("HDD critical: {0} %", sensor.Value);
+                                    if (sensor.Value > int.Parse(_configuration["CPU_Threshold_Usage"]!))
+                                    {
+                                        _logger.LogWarning("CPU critical: {0} %", sensor.Value);
+                                        _sendMail.SendWarningMail("CPU critical", $"CPU critical: {sensor.Value} %");
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    break;
+                        break;
+                    }
+                    // if HDD
+                    case HardwareType.Storage:
+                    {
+                        foreach (var sensor in hardware.Sensors)
+                        {
+                            if (sensor.SensorType == SensorType.Load)
+                            {
+                                // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
+                                if (sensor.Name == "HDD Total")
+                                {
+                                    if (sensor.Value > int.Parse(_configuration["HDD_Threshold_Usage"]!))
+                                    {
+                                        _logger.LogWarning("HDD critical: {0} %", sensor.Value);
+                                    }
+                                }
+                            }
+                        }
+
+                        break;
+                    }
                 }
+
+                computer.Close();
+
+                // foreach (IHardware subhardware in hardware.SubHardware)
+                // {
+                //     Console.WriteLine("\tSubhardware: {0}", subhardware.Name);
+                //
+                //     foreach (ISensor sensor in subhardware.Sensors)
+                //     {
+                //         Console.WriteLine("\t\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
+                //     }
+                // }
+                //
+                // foreach (ISensor sensor in hardware.Sensors)
+                // {
+                //     Console.WriteLine("\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
+                // }
             }
 
-            // foreach (IHardware subhardware in hardware.SubHardware)
-            // {
-            //     Console.WriteLine("\tSubhardware: {0}", subhardware.Name);
-            //
-            //     foreach (ISensor sensor in subhardware.Sensors)
-            //     {
-            //         Console.WriteLine("\t\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
-            //     }
-            // }
-            //
-            // foreach (ISensor sensor in hardware.Sensors)
-            // {
-            //     Console.WriteLine("\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
-            // }
+            return Task.CompletedTask;
         }
-
-        computer.Close();
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Error while monitoring");
+            return Task.CompletedTask;
+        }
     }
 
 

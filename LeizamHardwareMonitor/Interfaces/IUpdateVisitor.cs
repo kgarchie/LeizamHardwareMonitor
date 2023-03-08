@@ -4,7 +4,7 @@ namespace LeizamHardwareMonitor.Interfaces;
 
 public interface IUpdateVisitor
 {
-    public void Monitor();
+    public Task Monitor();
     public void VisitComputer(IComputer computer);
     public void VisitHardware(IHardware hardware);
     public void VisitSensor(ISensor sensor);

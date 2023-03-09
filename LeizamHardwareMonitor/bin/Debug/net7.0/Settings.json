@@ -4,8 +4,8 @@
   "Disk_Threshold_Usage": 80,
   "Virtual_Memory_Threshold_Usage": 80,
   "Physical_Memory_Threshold_Usage": 80,
-  "SmtpTo": "kelvindungu@gmail.com",
+  "SmtpTo": "archiethebig@gmail.com",
   "Domain": "https://topup.treasuredcodes.co.ke",
   "SmtpFrom": "airtimeservices@treasuredcodes.co.ke",
-  "Task_Delay": 300000
+  "Task_Delay": 60000
 }

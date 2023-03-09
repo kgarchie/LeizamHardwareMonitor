@@ -9,11 +9,11 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
     private readonly ISendMail _sendMail;
     private readonly ILogger _logger;
 
-    public UpdateVisitor(IConfiguration configuration, ILogger logger)
+    public UpdateVisitor(IConfiguration configuration, ILogger logger, ISendMail sendMail)
     {
         _configuration = configuration;
         _logger = logger;
-        _sendMail = new SendMail(_configuration, _logger);
+        _sendMail = sendMail;
     }
 
     public Task Monitor()
@@ -32,13 +32,12 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
             };
 
             computer.Open();
-            computer.Accept(new UpdateVisitor(_configuration, _logger));
+            computer.Accept(new UpdateVisitor(_configuration, _logger, _sendMail));
 
             foreach (IHardware hardware in computer.Hardware)
             {
                 switch (hardware.HardwareType)
                 {
-                    // hardware.Update();
                     case HardwareType.Memory:
                     {
                         // if memory
@@ -47,15 +46,13 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
                             if (sensor.SensorType != SensorType.Load) continue;
                             switch (sensor.Name)
                             {
-                                // Console.WriteLine(sensor.Name + ": " + sensor.Value.ToString() + " %");
-                                // Please note: There is both physical memory and virtual memory. The physical memory is the RAM, the virtual memory is the swap file.
                                 case "Memory":
                                 {
                                     if (sensor.Value > int.Parse(_configuration["CPU_Threshold_Usage"]!))
                                     {
                                         _logger.LogWarning("Physical memory critical: {0} %", sensor.Value);
                                         _sendMail.SendWarningMail("Physical memory critical",
-                                            $"Physical memory critical: {sensor.Value} %");
+                                            $"Physical memory critical: {sensor.Value} %", HardwareType.Memory);
                                     }
 
                                     break;
@@ -66,7 +63,7 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
                                     {
                                         _logger.LogWarning("Virtual memory critical: {0} %", sensor.Value);
                                         _sendMail.SendWarningMail("Virtual memory critical",
-                                            $"Virtual memory critical: {sensor.Value} %");
+                                            $"Virtual memory critical: {sensor.Value} %", HardwareType.Memory);
                                     }
 
                                     break;
@@ -89,7 +86,8 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
                                     if (sensor.Value > int.Parse(_configuration["CPU_Threshold_Usage"]!))
                                     {
                                         _logger.LogWarning("CPU critical: {0} %", sensor.Value);
-                                        _sendMail.SendWarningMail("CPU critical", $"CPU critical: {sensor.Value} %");
+                                        _sendMail.SendWarningMail("CPU critical", $"CPU critical: {sensor.Value} %",
+                                            HardwareType.Cpu);
                                     }
                                 }
                             }
@@ -110,6 +108,8 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
                                     if (sensor.Value > int.Parse(_configuration["HDD_Threshold_Usage"]!))
                                     {
                                         _logger.LogWarning("HDD critical: {0} %", sensor.Value);
+                                        _sendMail.SendWarningMail("HDD critical", $"HDD critical: {sensor.Value} %",
+                                            HardwareType.Storage);
                                     }
                                 }
                             }
@@ -120,21 +120,6 @@ public class UpdateVisitor : IUpdateVisitor, IVisitor
                 }
 
                 computer.Close();
-
-                // foreach (IHardware subhardware in hardware.SubHardware)
-                // {
-                //     Console.WriteLine("\tSubhardware: {0}", subhardware.Name);
-                //
-                //     foreach (ISensor sensor in subhardware.Sensors)
-                //     {
-                //         Console.WriteLine("\t\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
-                //     }
-                // }
-                //
-                // foreach (ISensor sensor in hardware.Sensors)
-                // {
-                //     Console.WriteLine("\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
-                // }
             }
 
             return Task.CompletedTask;

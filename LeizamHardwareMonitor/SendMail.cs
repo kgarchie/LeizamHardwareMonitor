@@ -23,13 +23,13 @@ public class SendMail : ISendMail
         switch (hardwareType)
         {
             case HardwareType.Cpu when _cpuIsSent:
-                _logger.LogWarning("CPU mail is already sent | Spam protection is active");
+                _logger.LogInformation("CPU mail is already sent | Spam protection is active");
                 return;
             case HardwareType.Memory when _memoryIsSent:
-                _logger.LogWarning("Memory mail is already sent | Spam protection is active");
+                _logger.LogInformation("Memory mail is already sent | Spam protection is active");
                 return;
             case HardwareType.Storage when _diskIsSent:
-                _logger.LogWarning("Disk mail is already sent | Spam protection is active");
+                _logger.LogInformation("Disk mail is already sent | Spam protection is active");
                 return;
             default:
                 _logger.LogInformation(hardwareType + " is calling SendWarningMail");

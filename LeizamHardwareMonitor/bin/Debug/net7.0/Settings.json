@@ -7,5 +7,5 @@
   "SmtpTo": "archiethebig@gmail.com",
   "Domain": "https://topup.treasuredcodes.co.ke",
   "SmtpFrom": "airtimeservices@treasuredcodes.co.ke",
-  "Task_Delay": 60000
+  "Task_Delay": 300000
 }

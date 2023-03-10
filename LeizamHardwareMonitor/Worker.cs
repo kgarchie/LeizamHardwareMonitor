@@ -5,8 +5,7 @@ namespace LeizamHardwareMonitor;
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
-    private readonly int _taskDelay;
-    private IUpdateVisitor _updateVisitor;
+    private readonly IUpdateVisitor _updateVisitor;
 
     public Worker(ILogger<Worker> logger)
     {
@@ -42,7 +41,7 @@ public class Worker : BackgroundService
         
         ISendMail sendMail = new SendMail(configuration, _logger);
         
-        _taskDelay = int.Parse(configuration["Task_Delay"]!);
+        int.Parse(configuration["Task_Delay"]!);
         
         _updateVisitor = new UpdateVisitor(configuration, _logger, sendMail);
     }
@@ -51,7 +50,7 @@ public class Worker : BackgroundService
     {
         while (!stoppingToken.IsCancellationRequested)
         {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            // _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
             // monitor hardware
             try
             {

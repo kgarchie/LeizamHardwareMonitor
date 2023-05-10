@@ -21,12 +21,6 @@ public class Worker : BackgroundService
             configuration["Virtual_Memory_Threshold_Usage"] != null &&
             configuration["Physical_Memory_Threshold_Usage"] != null &&
             configuration["Disk_Threshold_Usage"] != null &&
-            configuration["SmtpTo"] != string.Empty &&
-            configuration["SmtpTo"] != null &&
-            configuration["Domain"] != string.Empty &&
-            configuration["Domain"] != null &&
-            configuration["SmtpFrom"] != string.Empty &&
-            configuration["SmtpFrom"] != null &&
             configuration["Task_Delay"] != string.Empty &&
             configuration["Task_Delay"] != null
            )

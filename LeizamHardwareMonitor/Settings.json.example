@@ -4,8 +4,5 @@
   "Disk_Threshold_Usage": 80,
   "Virtual_Memory_Threshold_Usage": 80,
   "Physical_Memory_Threshold_Usage": 80,
-  "SmtpTo": "",
-  "Domain": "",
-  "SmtpFrom": "",
   "Task_Delay": 1000
 }

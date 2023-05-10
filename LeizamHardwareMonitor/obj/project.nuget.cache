@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g9npCVtMSi+cYLA8o7Pwu9vOuBJe/dCTCieQAulmTXh4amzSSh4htMpPS2kR/egO9u7AmWkQfHy480Z6ymVAuQ==",
+  "dgSpecHash": "ZoK8prYY28LV5S6GA/9RF0BznprQ/Ej+ad2wPaYj03KouvNc0pxuVMiPRlJDpy5qQ3j4oUDb+K1UV71ET14Luw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
+  "projectFilePath": "C:\\Users\\Bosir\\RiderProjects\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Bosir\\.nuget\\packages\\hidsharp\\2.1.0\\hidsharp.2.1.0.nupkg.sha512",
     "C:\\Users\\Bosir\\.nuget\\packages\\librehardwaremonitorlib\\0.9.2-pre197\\librehardwaremonitorlib.0.9.2-pre197.nupkg.sha512",

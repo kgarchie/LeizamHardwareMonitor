@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj": {}
+    "C:\\Users\\Bosir\\RiderProjects\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj": {
+    "C:\\Users\\Bosir\\RiderProjects\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
+        "projectUniqueName": "C:\\Users\\Bosir\\RiderProjects\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
         "projectName": "LeizamHardwareMonitor",
-        "projectPath": "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
+        "projectPath": "C:\\Users\\Bosir\\RiderProjects\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\LeizamHardwareMonitor.csproj",
         "packagesPath": "C:\\Users\\Bosir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bosir\\OneDrive\\Desktop\\Extras\\dotNET\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\obj\\",
+        "outputPath": "C:\\Users\\Bosir\\RiderProjects\\LeizamHardwareMonitor\\LeizamHardwareMonitor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Bosir\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Bosir\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -69,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
